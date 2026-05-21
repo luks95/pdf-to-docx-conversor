@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word to PDF Converter</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body style="--wails-drop-target: drop">
+    <div id="app" style="--wails-drop-target: drop">
+        <h1 id="app-title" style="--wails-drop-target: drop">Conversor Inteligente</h1>
+        
+        <!-- Mode Switcher -->
+        <div class="mode-container" style="--wails-drop-target: drop">
+            <div class="mode-selector" style="--wails-drop-target: drop">
+                <button class="mode-btn active" id="btn-word-to-pdf" data-mode="word-to-pdf" style="--wails-drop-target: drop">
+                    <span class="icon">📄</span> Word a PDF
+                </button>
+                <button class="mode-btn" id="btn-pdf-to-word" data-mode="pdf-to-word" style="--wails-drop-target: drop">
+                    <span class="icon">📕</span> PDF a Word
+                </button>
+            </div>
+        </div>
+
+        <div id="drop-zone" class="drop-zone" style="--wails-drop-target: drop">
+            <div class="drop-icon" id="drop-icon" style="--wails-drop-target: drop">📄</div>
+            <p id="drop-text" style="--wails-drop-target: drop">Arrastra aquí tus archivos Word o</p>
+            <button id="browse-files-btn" style="--wails-drop-target: drop">Seleccionar archivos</button>
+            <div id="file-list" class="file-list" style="--wails-drop-target: drop"></div>
+        </div>
+
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <p>Convirtiendo archivos...</p>
+        </div>
+
+        <div class="controls">
+            <div class="output-path">
+                <strong>Carpeta de salida:</strong>
+                <span id="output-dir-label">Misma carpeta que el archivo</span>
+            </div>
+            
+            <div class="button-group">
+                <button id="select-dir-btn">Elegir carpeta</button>
+                <button id="convert-btn" disabled>Convertir a PDF</button>
+            </div>
+        </div>
+
+        <div id="status" class="status"></div>
+        
+        <button id="open-folder-btn" class="hidden">Abrir carpeta</button>
+    </div>
+    <script src="./src/main.js" type="module"></script>
+</body>
+</html>
