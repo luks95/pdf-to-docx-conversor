@@ -1,0 +1,359 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --wails-drop-target: drop;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  --wails-drop-target: drop;
+}
+
+h1 {
+  font-size: 2.2em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  --wails-drop-target: drop;
+}
+
+/* Mode Container and Toggle */
+.mode-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  --wails-drop-target: drop;
+}
+
+.mode-selector {
+  display: flex;
+  background-color: #1a1a1a;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #333333;
+  width: 100%;
+  --wails-drop-target: drop;
+}
+
+.mode-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #a0a0a0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  --wails-drop-target: drop;
+}
+
+.mode-btn.active {
+  color: #ffffff;
+  background-color: #2a2a2a;
+  border-color: #444444;
+}
+
+.mode-btn .icon {
+  font-size: 1rem;
+}
+
+/* Drop Zone original */
+.drop-zone {
+  border: 2px dashed #646cff;
+  border-radius: 8px;
+  padding: 3rem 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s, background-color 0.25s;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  --wails-drop-target: drop;
+}
+
+.drop-zone.hover {
+  border-color: #535bf2;
+  background-color: #2a2a2a;
+}
+
+.drop-icon {
+  font-size: 2.2em;
+  --wails-drop-target: drop;
+}
+
+#drop-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.87);
+  --wails-drop-target: drop;
+}
+
+button {
+  font-family: Inter, system-ui, sans-serif;
+  cursor: pointer;
+  outline: none;
+}
+
+#browse-files-btn {
+  background-color: #242424;
+  border: 1px solid #333;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  --wails-drop-target: drop;
+}
+
+#browse-files-btn:hover {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+/* File List UI */
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: auto;
+  text-align: left;
+  --wails-drop-target: drop;
+}
+
+.file-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.file-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.file-list::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+.file-item {
+  background-color: rgba(100, 108, 255, 0.1);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  --wails-drop-target: drop;
+}
+
+.file-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  --wails-drop-target: drop;
+}
+
+.remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ff5555;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+
+.remove-btn:hover {
+  opacity: 0.7;
+}
+
+/* Loader */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(100, 108, 255, 0.1);
+  border-left-color: #646cff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Controls */
+.controls {
+  margin-bottom: 1.5rem;
+}
+
+.output-path {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  background-color: #1a1a1a;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.output-path strong {
+  color: #ffffff;
+}
+
+#output-dir-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+  color: #646cff;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+#select-dir-btn {
+  flex: 1;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+#select-dir-btn:hover {
+  background-color: #242424;
+}
+
+#convert-btn {
+  flex: 2;
+  background-color: #646cff;
+  border: 1px solid transparent;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+#convert-btn:hover:not(:disabled) {
+  background-color: #535bf2;
+}
+
+#convert-btn:disabled {
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+/* Status Alert */
+.status {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+.status.info {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+}
+
+.status.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Open folder button */
+#open-folder-btn {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+#open-folder-btn:hover {
+  background-color: #059669;
+}
+
+@media (max-width: 480px) {
+  #app {
+    padding: 1.5rem 1rem;
+  }
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
