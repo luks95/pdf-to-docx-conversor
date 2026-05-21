@@ -1,4 +1,4 @@
-# 📄 Conversor de Documentos de Escritorio (Word ⇄ PDF)
+# 📄 Conversor de Documentos de Escritorio (Word ⇄ PDF) 
 
 Este repositorio contiene la solución completa para la aplicación **Conversor Inteligente (Word to PDF Desktop Converter)** construida en **Go** y **Wails v2** para Windows.
 
